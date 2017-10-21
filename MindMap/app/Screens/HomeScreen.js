@@ -1,5 +1,8 @@
 import React, { Component, } from 'react'
-import { View, } from 'react-native'
+import {
+  View,
+  Text,
+} from 'react-native'
 
 class HomeScreen extends Component {
 
@@ -15,7 +18,15 @@ class HomeScreen extends Component {
   render() {
     return (
       <View>
-        
+        <Text
+          style={{
+            color: 'black',
+            fontSize: 16,
+            fontWeight: 'normal',
+            fontFamily: 'Helvetica Neue',
+          }}>
+          Home Screen
+        </Text>
       </View>
     )
   }
