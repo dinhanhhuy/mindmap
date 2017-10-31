@@ -10,13 +10,13 @@ class MenuCell extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = { text: props.text };
   }
 
   render() {
     return (
       <View>
-        <TiFolderOpen /> Hello {}
+        Hello {this.state} hello
       </View>
     )
   }

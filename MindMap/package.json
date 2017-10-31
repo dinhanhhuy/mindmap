@@ -9,7 +9,6 @@
   "dependencies": {
     "deco-ride-share-demo": "^1.1.0",
     "react": "16.0.0-beta.5",
-    "react-icons": "^2.2.7",
     "react-native": "0.49.3",
     "react-navigation": "^1.0.0-beta.15"
   },

@@ -4,7 +4,7 @@ import {
   Text,
   ListView,
 } from 'react-native'
-import {FaBeer} from 'react-icons';
+import MenuCell from '../Components/MenuCell'
 
 class HomeScreen extends Component {
 
@@ -42,7 +42,7 @@ class HomeScreen extends Component {
         </Text>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData}</Text>}
+          renderRow={(rowData) => <MenuCell text='ashdasjhdja lien thanh' />}
         />
       </View>
     )
