@@ -13,17 +13,21 @@ import {
   View,
   Button
 } from 'react-native';
-import HomeScreen from './app/Screens/HomeScreen'
 import { StackNavigator } from 'react-navigation';
+import HomeScreen from './app/Screens/HomeScreen'
+import NewProjectScreen from './app/Screens/NewProjectScreen'
+import SavedProjectScreen from './app/Screens/SavedProjectScreen'
+import MapScreen from './app/Screens/MapScreen'
+
 
 export default class App extends React.Component {
   render() {
-    return <Routes ></Routes>
+    return <Routes style={{backgroundColor: '#F5FCFF'}} ></Routes>
   }
 }
 
 export const Routes = StackNavigator({
-  Home: { screen: HomeScreen },
+  Home: { screen: SavedProjectScreen },
 });
 
 AppRegistry.registerComponent('App', () => App);

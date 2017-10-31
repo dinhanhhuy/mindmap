@@ -1,18 +1,13 @@
 import React, { Component, } from 'react'
-import {
-  View,
-  Text,
-  ListView,
-} from 'react-native'
+import { View, Button, ListView, Text } from 'react-native'
+import MenuCell from '../Components/MenuCell'
 import ListScreen from '../Screens/ListScreen'
 
-class HomeScreen extends Component {
+class NewProjectScreen extends Component {
 
   static propTypes = {}
+
   static defaultProps = {}
-  static navigationOptions = {
-    title: 'Mind Map',
-  };
 
   static navigationOptions = ({ navigation }) => ({
     title: 'New Project',
@@ -21,12 +16,15 @@ class HomeScreen extends Component {
   constructor(props) {
     super(props)
     const items = [
-      'Recent project',
-      'New project',
-      'Saved project',
-      'Get external feature',
-      'Tutorial',
-      'About us',
+        'Style Circling',
+        'Style Pipe',
+        'Style Column',
+        'Style 4',
+        'Style 5',
+        'Style 6',
+        'Style 7',
+        'Style 8',
+        'Style 9',
     ];
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
@@ -42,4 +40,4 @@ class HomeScreen extends Component {
   }
 }
 
-export default HomeScreen
+export default NewProjectScreen

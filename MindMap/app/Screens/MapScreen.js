@@ -5,17 +5,15 @@ import {
   ListView,
 } from 'react-native'
 import ListScreen from '../Screens/ListScreen'
+import MapNode from '../Components/MapNode'
 
-class HomeScreen extends Component {
+class MapScreen extends Component {
 
   static propTypes = {}
   static defaultProps = {}
-  static navigationOptions = {
-    title: 'Mind Map',
-  };
-
+  
   static navigationOptions = ({ navigation }) => ({
-    title: 'New Project',
+    title: 'Mind Map',
   });
 
   constructor(props) {
@@ -37,9 +35,9 @@ class HomeScreen extends Component {
   
   render() {
     return (
-        <ListScreen dataSource={this.state.items} />
+        <MapNode />
     )
   }
 }
 
-export default HomeScreen
+export default MapScreen

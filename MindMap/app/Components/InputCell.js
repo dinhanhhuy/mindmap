@@ -1,7 +1,7 @@
 import React, { Component, } from 'react'
-import { Alert, View, Text, StyleSheet, Button, TouchableHighlight } from 'react-native'
+import { Alert, View, Text, StyleSheet, Button, TouchableHighlight, TextInput } from 'react-native'
 
-class MenuCell extends Component {
+class InputCell extends Component {
 
   static propTypes = {}
 
@@ -19,11 +19,8 @@ class MenuCell extends Component {
     return (
       <View style={styles.container} >
         <View style={styles.line} />
-        <TouchableHighlight onPress={() => this._onPressButton()} style={styles.touchable} underlayColor="black">
-          <View>
-            <Text style={styles.text}>{this.props.text}</Text>
-          </View>
-        </TouchableHighlight>
+        <Text style={styles.text}>{this.props.text}</Text>
+        <TextInput/>
       </View>
     )
   }
@@ -62,4 +59,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MenuCell
+export default InputCell
