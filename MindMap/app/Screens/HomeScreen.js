@@ -2,19 +2,32 @@ import React, { Component, } from 'react'
 import {
   View,
   Text,
+  ListView,
 } from 'react-native'
+import {FaBeer} from 'react-icons';
 
 class HomeScreen extends Component {
 
   static propTypes = {}
-
   static defaultProps = {}
+  static navigationOptions = {
+    title: 'Home',
+  };
 
   constructor(props) {
     super(props)
-    this.state = {}
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows([
+        'Recent project',
+        'New project',
+        'Saved project',
+        'Get external feature',
+        'Tutorial',
+        'About us']),
+    };
   }
-
+  
   render() {
     return (
       <View>
@@ -25,8 +38,12 @@ class HomeScreen extends Component {
             fontWeight: 'normal',
             fontFamily: 'Helvetica Neue',
           }}>
-          Home Screen
+          Home Screen is awesome
         </Text>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => <Text>{rowData}</Text>}
+        />
       </View>
     )
   }
