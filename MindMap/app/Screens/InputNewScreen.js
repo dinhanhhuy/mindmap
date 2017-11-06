@@ -13,7 +13,7 @@ class InputNewScreen extends Component {
   static defaultProps = {}
 
   static navigationOptions = ({ navigation }) => ({
-    title: 'New Project',
+    title: 'Input new ',
   });
 
   constructor(props) {

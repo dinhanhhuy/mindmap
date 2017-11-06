@@ -27,7 +27,7 @@ export default class App extends React.Component {
 }
 
 export const Routes = StackNavigator({
-  Home: { screen: SavedProjectScreen },
+  Home: { screen: MapScreen },
 });
 
 AppRegistry.registerComponent('App', () => App);

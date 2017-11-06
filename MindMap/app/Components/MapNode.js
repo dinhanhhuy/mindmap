@@ -20,33 +20,18 @@ class MapNode extends Component {
   render() {
     return (
       <View>
-      <View style={[styles.draggableContainer, styles.container]} top={30} left={30} >
-        <Image
-          resizeMode= 'contain'
-          style={styles.line}
-          source={{
-            uri: 'https://cbsnews2.cbsistatic.com/hub/i/r/2015/02/27/dc63bf50-05ee-4733-9217-4718ee9c81fe/resize/620x465/cb60f988990627112be9a03525f66c34/labrador-retriever1istock.jpg'}
-          }
-        />
-        <Text numberOfLines={2} style={styles.text}>
-            🍔 This is super Atom 🍔{"\n"}
-            Have love bugger with cheese
-        </Text>
-      </View>
-
-      <View style={[styles.draggableContainer, styles.container]} top={150} left={45} >
-        <Image
-          resizeMode= 'contain'
-          style={styles.line}
-          source={{
-            uri: 'https://cbsnews2.cbsistatic.com/hub/i/r/2015/02/27/dc63bf50-05ee-4733-9217-4718ee9c81fe/resize/620x465/cb60f988990627112be9a03525f66c34/labrador-retriever1istock.jpg'}
-          }
-        />
-        <Text numberOfLines={2} style={styles.text}>
-         🍔 This is super Atom 🍔{"\n"}
-          Have love bugger with cheese
-        </Text>
-      </View>
+        <View style={[styles.draggableContainer, styles.container]} top={this.props.y} left={this.props.x} >
+          <Image
+            resizeMode= 'contain'
+            style={styles.line}
+            source={{
+              uri: this.props.uri
+            }}
+          />
+          <Text numberOfLines={2} style={styles.text}>
+              {this.props.text}
+          </Text>
+        </View>
       </View>
     )
   }
@@ -55,7 +40,8 @@ class MapNode extends Component {
 const styles = StyleSheet.create({
   draggableContainer: {
     position: 'absolute',
-    height: 80,
+    height: 60,
+    width: 150
   },
 
   container: {
@@ -71,8 +57,8 @@ const styles = StyleSheet.create({
   },
 
   line: {
-    height: 65,
-    width: 65,
+    height: 40,
+    width: 40,
     marginLeft: 5,
   },
 
