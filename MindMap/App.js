@@ -18,7 +18,7 @@ import HomeScreen from './app/Screens/HomeScreen'
 import NewProjectScreen from './app/Screens/NewProjectScreen'
 import SavedProjectScreen from './app/Screens/SavedProjectScreen'
 import MapScreen from './app/Screens/MapScreen'
-
+import TutorialScreen from './app/Screens/TutorialScreen'
 
 export default class App extends React.Component {
   render() {
@@ -27,7 +27,7 @@ export default class App extends React.Component {
 }
 
 export const Routes = StackNavigator({
-  Home: { screen: MapScreen },
+  Home: { screen: HomeScreen },
 });
 
 AppRegistry.registerComponent('App', () => App);

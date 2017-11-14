@@ -9,33 +9,38 @@ class MenuCell extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      _onPress: props.onPress,
+    };
   }
 
-  _onPressButton() {
+  _onPress(item) {
     Alert.alert('You long-pressed the button!')
   }
 
   render() {
     return (
-      <View style={styles.container} >
-        <View style={styles.line} />
-        <TouchableHighlight onPress={() => this._onPressButton()} style={styles.touchable} underlayColor="black">
+      <TouchableHighlight 
+        onPress={() => this.state._onPress()}
+        style={styles.touchable} 
+        underlayColor="black">
+
+        <View style={styles.container}>
+          <View style={styles.line} />
           <View>
             <Text style={styles.text}>{this.props.text}</Text>
           </View>
-        </TouchableHighlight>
-      </View>
+        </View>
+
+      </TouchableHighlight>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
     flex: 1,
     flexDirection: 'row',
-    marginTop: 3,
-    marginBottom: 3,
     backgroundColor: '#3B3838',
     height: 40,
     alignItems: 'center',
@@ -49,7 +54,14 @@ const styles = StyleSheet.create({
   },
 
   touchable: {
-    
+    margin: 10,
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 3,
+    marginBottom: 3,
+    backgroundColor: '#3B3838',
+    height: 40,
+    alignItems: 'center',
   },
 
   text: {

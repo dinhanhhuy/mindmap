@@ -15,7 +15,7 @@ class HomeScreen extends Component {
   };
 
   static navigationOptions = ({ navigation }) => ({
-    title: 'New Project',
+    title: 'Mind Map',
   });
 
   constructor(props) {

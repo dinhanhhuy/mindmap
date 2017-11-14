@@ -18,21 +18,24 @@ class MapNode extends Component {
   }
 
   render() {
-    return (
-      <View>
-        <View style={[styles.draggableContainer, styles.container]} top={this.props.y} left={this.props.x} >
-          <Image
+    image = null;
+    if (this.props.uri) {
+        image = <Image
             resizeMode= 'contain'
             style={styles.line}
             source={{
-              uri: this.props.uri
+                uri: this.props.uri
             }}
-          />
+        />
+    }
+
+    return (
+        <View style={[styles.draggableContainer, styles.container]} top={this.props.y} left={this.props.x} >
+          {image}
           <Text numberOfLines={2} style={styles.text}>
               {this.props.text}
           </Text>
         </View>
-      </View>
     )
   }
 }

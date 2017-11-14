@@ -1,5 +1,5 @@
 import React, { Component, } from 'react'
-import { View, Button, ListView, Text } from 'react-native'
+import { View, Button, ListView, Text, Alert } from 'react-native'
 import MenuCell from '../Components/MenuCell'
 
 class ListScreen extends Component {
@@ -7,6 +7,9 @@ class ListScreen extends Component {
   static propTypes = {}
 
   static defaultProps = {}
+  itemDidClick(item) {
+    Alert.alert('click list view item! ' + item)
+  }
 
   constructor(props) {
     super(props)
@@ -29,7 +32,7 @@ class ListScreen extends Component {
         </Text>
         <ListView
             dataSource={this.state.dataSource}
-            renderRow={(rowData) => <MenuCell text={rowData} />}
+            renderRow={(rowData) => <MenuCell text={rowData} onPress={(rowData) => this.itemDidClick() } />}
         />
       </View>
     )
