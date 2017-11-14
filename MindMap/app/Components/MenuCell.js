@@ -10,18 +10,14 @@ class MenuCell extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      _onPress: props.onPress,
+      onPress: props.onPress,
     };
-  }
-
-  _onPress(item) {
-    Alert.alert('You long-pressed the button!')
   }
 
   render() {
     return (
       <TouchableHighlight 
-        onPress={() => this.state._onPress()}
+        onPress={() => this.state.onPress(this.props.text)}
         style={styles.touchable} 
         underlayColor="black">
 

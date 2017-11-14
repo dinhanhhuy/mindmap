@@ -7,15 +7,13 @@ class ListScreen extends Component {
   static propTypes = {}
 
   static defaultProps = {}
-  itemDidClick(item) {
-    Alert.alert('click list view item! ' + item)
-  }
 
   constructor(props) {
     super(props)
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(props.dataSource),
+      onPressItem: (item) => props.onPressItem(item),
     };
   }
   
@@ -32,7 +30,12 @@ class ListScreen extends Component {
         </Text>
         <ListView
             dataSource={this.state.dataSource}
-            renderRow={(rowData) => <MenuCell text={rowData} onPress={(rowData) => this.itemDidClick() } />}
+            renderRow={
+              (rowData) => <MenuCell
+                text={rowData}
+                onPress={(item) => this.state.onPressItem(item) }
+              />
+            }
         />
       </View>
     )

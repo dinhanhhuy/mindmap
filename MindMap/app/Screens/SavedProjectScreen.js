@@ -35,8 +35,13 @@ class SavedProjectScreen extends Component {
   
   render() {
     return (
-        <ListScreen dataSource={this.state.items} />
+        <ListScreen dataSource={this.state.items} onPressItem={(item) => this.onPressItem(item)}/>
     )
+  }
+
+  onPressItem(item) {
+    const { navigate } = this.props.navigation;
+    navigate('MapScreen', {})
   }
 }
 
