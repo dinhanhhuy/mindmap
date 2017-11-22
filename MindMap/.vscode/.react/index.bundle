@@ -66589,6 +66589,10 @@ var _class,
 
 var _reactNative = require(12            ); // 12 = react-native
 
+var _Helper = require(567              ); // 567 = ../Model/Helper
+
+var _Helper2 = _interopRequireDefault(_Helper);
+
 var _ListScreen = require(555                    ); // 555 = ../Screens/ListScreen
 
 var _ListScreen2 = _interopRequireDefault(_ListScreen);
@@ -66596,8 +66600,6 @@ var _ListScreen2 = _interopRequireDefault(_ListScreen);
 var _NewProjectScreen = require(557                 ); // 557 = ./NewProjectScreen
 
 var _NewProjectScreen2 = _interopRequireDefault(_NewProjectScreen);
-
-var _reactNavigation = require(491               ); // 491 = react-navigation
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66654,7 +66656,7 @@ var HomeScreen = _wrapComponent('HomeScreen')((_temp = _class = function (_Compo
           return _this2.onPressItem(item);
         }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 43
         }
       });
     }
@@ -66700,6 +66702,112 @@ var HomeScreen = _wrapComponent('HomeScreen')((_temp = _class = function (_Compo
 
 exports.default = HomeScreen;
 }, 554, null, "MindMap/app/Screens/HomeScreen.js");
+__d(/* MindMap/app/Model/Helper.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactNative = require(12            ); // 12 = react-native
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Helper = function () {
+    function Helper() {
+        _classCallCheck(this, Helper);
+    }
+
+    _createClass(Helper, null, [{
+        key: 'setData',
+        value: function setData(key, value) {
+            var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+            try {
+                _reactNative.AsyncStorage.setItem(key, value);
+            } catch (error) {
+                _reactNative.Alert.alert("Can\'t sync data: " + error);
+            }
+        }
+    }, {
+        key: 'getData',
+        value: function getData(key) {
+            var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+            try {
+                _reactNative.AsyncStorage.getItem(key).then(function (value) {
+                    if (callback) {
+                        callback(value);
+                    }
+                });
+            } catch (error) {
+                console.log('error: ');
+            }
+        }
+    }, {
+        key: 'createSampleData',
+        value: function createSampleData() {
+            value = '[{"name": "Dog", "date": "Sun Nov 19 2017 21:09:13 GMT+0700 (+07)", "map": "' + Helper.sampleDiv2() + '"}, {"name": "Computer", "date": "Sun Nov 19 2017 19:09:13 GMT+0700 (+07)", "map": "' + Helper.sampleDiv2() + '"}]';
+            Helper.setData('Project', value);
+        }
+    }, {
+        key: 'sampleDiv1',
+        value: function sampleDiv1() {
+            return '<View>\r\n        <MapNode\r\n        x={200}\r\n        y={100}\r\n        text={"This is Atom\\n\uD83D\uDC36\uD83D\uDC36\uD83D\uDC36"}\r\n        uri={\'https://cbsnews2.cbsistatic.com/hub/i/r/2015/02/27/dc63bf50-05ee-4733-9217-4718ee9c81fe/resize/620x465/cb60f988990627112be9a03525f66c34/labrador-retriever1istock.jpg\'}\r\n        />\r\n\r\n        <MapNode\r\n        x={300}\r\n        y={150}\r\n        text={"This is Atom\\n\uD83D\uDC36\uD83D\uDC36\uD83D\uDC36"}\r\n        uri={\'https://cbsnews2.cbsistatic.com/hub/i/r/2015/02/27/dc63bf50-05ee-4733-9217-4718ee9c81fe/resize/620x465/cb60f988990627112be9a03525f66c34/labrador-retriever1istock.jpg\'}\r\n        />\r\n\r\n        <MapNode\r\n        x={400}\r\n        y={200}\r\n        text={"This is Atom\\n\uD83D\uDC36\uD83D\uDC36\uD83D\uDC36"}\r\n        uri={\'https://cbsnews2.cbsistatic.com/hub/i/r/2015/02/27/dc63bf50-05ee-4733-9217-4718ee9c81fe/resize/620x465/cb60f988990627112be9a03525f66c34/labrador-retriever1istock.jpg\'}\r\n        />\r\n\r\n        <MapNode\r\n        x={500}\r\n        y={250}\r\n        text={"This is Atom\\n\uD83D\uDC36\uD83D\uDC36\uD83D\uDC36"}\r\n        uri={\'https://cbsnews2.cbsistatic.com/hub/i/r/2015/02/27/dc63bf50-05ee-4733-9217-4718ee9c81fe/resize/620x465/cb60f988990627112be9a03525f66c34/labrador-retriever1istock.jpg\'}\r\n        />\r\n\r\n      </View>';
+        }
+    }, {
+        key: 'sampleDiv2',
+        value: function sampleDiv2() {
+            return "create data";
+        }
+    }, {
+        key: 'projectData',
+        value: function projectData(name, callback) {
+            Helper.projects('Project', function (projects) {
+                for (var index in projects) {
+                    project = projects[index];
+                    if (project['name'] === name) {
+                        if (callback) {
+                            callback(project);
+                        }
+                    }
+                }
+            });
+        }
+    }, {
+        key: 'addProject',
+        value: function addProject(newProject) {
+            var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+            Helper.getData('Project', function (value) {
+                var json = JSON.parse(value);
+                json = json ? json + newProject : [newProject];
+                jsonString = JSON.stringify(json);
+                Helper.setData('Project', jsonString);
+            });
+            if (callback) {
+                callback(result);
+            }
+        }
+    }, {
+        key: 'removeProject',
+        value: function removeProject() {}
+    }, {
+        key: 'projects',
+        value: function projects(callback) {
+            Helper.getData('Project', function (value) {
+                var json = JSON.parse(value);
+                if (callback) {
+                    callback(json);
+                }
+            });
+        }
+    }]);
+
+    return Helper;
+}();
+
+exports.default = Helper;
+}, 567, null, "MindMap/app/Model/Helper.js");
 __d(/* MindMap/app/Screens/ListScreen.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -66780,7 +66888,7 @@ var ListScreen = _wrapComponent('ListScreen')((_temp = _class = function (_Compo
         _reactNative.View,
         { style: { backgroundColor: '#ECF2F5' }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 22
+            lineNumber: 23
           }
         },
         _react3.default.createElement(_reactNative.Text, {
@@ -66791,7 +66899,7 @@ var ListScreen = _wrapComponent('ListScreen')((_temp = _class = function (_Compo
             fontFamily: 'Helvetica Neue'
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 23
+            lineNumber: 24
           }
         }),
         _react3.default.createElement(_reactNative.ListView, {
@@ -66804,13 +66912,13 @@ var ListScreen = _wrapComponent('ListScreen')((_temp = _class = function (_Compo
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 34
+                lineNumber: 35
               }
             });
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 31
+            lineNumber: 32
           }
         })
       );
@@ -67054,11 +67162,22 @@ var NewProjectScreen = _wrapComponent('NewProjectScreen')((_temp = _class = func
   _createClass(NewProjectScreen, [{
     key: 'render',
     value: function render() {
-      return _react3.default.createElement(_ListScreen2.default, { dataSource: this.state.items, __source: {
+      var _this2 = this;
+
+      return _react3.default.createElement(_ListScreen2.default, { dataSource: this.state.items, onPressItem: function onPressItem(item) {
+          return _this2.onPressItem(item);
+        }, __source: {
           fileName: _jsxFileName,
           lineNumber: 38
         }
       });
+    }
+  }, {
+    key: 'onPressItem',
+    value: function onPressItem(item) {
+      var navigate = this.props.navigation.navigate;
+
+      navigate('MapScreen', {});
     }
   }]);
 
@@ -67100,6 +67219,10 @@ var _ListScreen = require(555                    ); // 555 = ../Screens/ListScre
 
 var _ListScreen2 = _interopRequireDefault(_ListScreen);
 
+var _Helper = require(567              ); // 567 = ../Model/Helper
+
+var _Helper2 = _interopRequireDefault(_Helper);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67135,25 +67258,56 @@ var SavedProjectScreen = _wrapComponent('SavedProjectScreen')((_temp = _class = 
 
     var _this = _possibleConstructorReturn(this, (SavedProjectScreen.__proto__ || Object.getPrototypeOf(SavedProjectScreen)).call(this, props));
 
-    var items = ['12/12/2017 - Alchemid and Gold', '12/12/2017 - Push app to store', '12/12/2017 - Cook every thing', '12/12/2017 - project 4', '12/12/2017 - project 5', '12/12/2017 - project 6', '12/12/2017 - project 7', '12/12/2017 - project 8', '12/12/2017 - project 9'];
+    var loading = ['loading...'];
     var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
         return r1 !== r2;
       } });
+
     _this.state = {
-      items: items,
+      items: loading,
       dataSource: ds.cloneWithRows({ items: items })
     };
+
+    console.log('loading');
+    var items = [];
+    _Helper2.default.projects(function (projects) {
+      for (var index in projects) {
+        var project = projects[index];
+        items.push(project['name']);
+      }
+      console.log(items);
+      var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+          return r1 !== r2;
+        } });
+      _this.setState({
+        items: items,
+        dataSource: ds.cloneWithRows({ items: items })
+      });
+      console.log('update state');
+    });
     return _this;
   }
 
   _createClass(SavedProjectScreen, [{
     key: 'render',
     value: function render() {
-      return _react3.default.createElement(_ListScreen2.default, { dataSource: this.state.items, __source: {
+      var _this2 = this;
+
+      console.log('render');
+      return _react3.default.createElement(_ListScreen2.default, { dataSource: this.state.items, onPressItem: function onPressItem(item) {
+          return _this2.onPressItem(item);
+        }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 48
         }
       });
+    }
+  }, {
+    key: 'onPressItem',
+    value: function onPressItem(item) {
+      var navigate = this.props.navigation.navigate;
+
+      navigate('MapScreen', {});
     }
   }]);
 
